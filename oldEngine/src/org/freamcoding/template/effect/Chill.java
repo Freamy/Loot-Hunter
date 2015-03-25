@@ -7,7 +7,7 @@ import org.newdawn.slick.opengl.Texture;
 
 public class Chill extends Effect {
 
-	public ArrayList<Texture> self = loadTextures("graphics/effectIcons/curse", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/effectIcons/chill", "png", true);
 
 	
 	public Chill(int dmg) {

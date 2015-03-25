@@ -7,7 +7,7 @@ import org.newdawn.slick.opengl.Texture;
 
 public class Burning extends Effect {
 
-	public ArrayList<Texture> self = loadTextures("graphics/effectIcons/curse", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/effectIcons/burning", "png", true);
 
 	
 	public Burning(int dmg) {

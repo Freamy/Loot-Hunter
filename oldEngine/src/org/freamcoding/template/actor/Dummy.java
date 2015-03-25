@@ -14,7 +14,7 @@ public class Dummy extends Actor {
 	public Dummy(int x, int y) {
 		super(x, y);
 		on = true;
-		weapon = new ChaosMace();
+		weapon = new Mace();
 		maxHealth = 100;
 		health = 100;
 	}

@@ -12,7 +12,7 @@ public class StringDrawer {
 		for(int i = 0; i < sentence.length(); i++){
 			char current = sentence.charAt(i);
 			int id = convertCharToTextureIndex(current);
-			int padding = 5;
+			int padding = 0;
 			float x = locX + size*i - i*padding;
 			float y = locY;
 			float sizeF = size;
@@ -21,8 +21,11 @@ public class StringDrawer {
 	}
 	
 	public int convertCharToTextureIndex(char c){
-		if(c == ' ') return c-6;
-		if(c > 57) return c-65;
+		if(c == ' ') {
+			System.out.println(c+" "+(int)c);
+			return c-22;
+		}
+		if(c > 57) return c-54;
 		else return c-48;
 	}
 }

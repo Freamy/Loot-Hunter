@@ -12,7 +12,7 @@ public class Mace extends Weapon {
 	public Mace(){
 		super();
 		negative.add(new Damage(3));
-		toolTip = "Mace - ";
+		toolTip = "Mace ";
 	}
 	
 	public void bindSelf(){

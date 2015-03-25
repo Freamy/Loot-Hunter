@@ -34,7 +34,7 @@ public class Screen {
 		drawPlayer();
 		drawEnemy();
 		
-		//drawFloatingText();
+		drawFloatingText();
 		drawEffects();
 		drawTooltips();
 		drawLoots();
@@ -219,7 +219,7 @@ public class Screen {
 	public void drawFloatingText(){
 		for(FloatingText text: Data.floatingTexts){
 			glColor4f(1,0,0,1);
-			drawText(text.text, text.x, text.y, 48);
+			drawText(text.text, text.x, text.y, 32);
 			glColor4f(1,0,0,1);
 		}
 	}
@@ -236,7 +236,7 @@ public class Screen {
 	}
 	
 	public void drawTooltips(){
-		drawText(Data.tooltip, 20, 960, 32);
+		drawText(Data.tooltip, 20, 960, 16);
 	}
 	
 	public void drawText(String text, float x, float y, int size){
@@ -251,12 +251,12 @@ public class Screen {
 	
 	public void drawLoots(){
 		for(LootBag lootBag: Data.loots){
-			lootBag.bindSelf();
-			float drawX = (lootBag.blockX - Data.player.blockX + Data.visionX);
-			float drawY = (lootBag.blockY - Data.player.blockY + Data.visionY);
+			lootBag.loot.bindSelf();
+			int drawX = (int)(lootBag.blockX - Data.player.blockX + Data.visionX);
+			int drawY = (int)(lootBag.blockY - Data.player.blockY + Data.visionY);
 			drawX *= Data.blockSize;
 			drawY *= Data.blockSize;
-			drawQuad(drawX-8, drawY+8, Data.blockSize-16, Data.blockSize-16); // MAGIC
+			drawQuad(drawX, drawY, Data.blockSize, Data.blockSize);
 		}
 	}
 	

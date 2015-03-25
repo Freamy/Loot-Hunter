@@ -17,7 +17,7 @@ public class SkeletonWarrior extends Actor {
 		this.weapon = new BroadSword();
 		maxHealth = 25;
 		health = 25;
-		toolTip = "Weapon: " + weapon.getTooltip();
+		toolTip = "Weapon " + weapon.getTooltip();
 	}
 
 	@Override

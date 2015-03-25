@@ -89,24 +89,8 @@ public class Logic {
 	}
 	
 	public boolean canPressKey(){
-		if(Keyboard.isKeyDown(Keyboard.KEY_W))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_S))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_A))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_D))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_O))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_P))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_N))
-			return false;
-		else if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-			return false;
-		if(Keyboard.isKeyDown(Keyboard.KEY_Q)) 
-			return false;
+		for(int i = 0; i < Keyboard.getKeyCount(); i++)
+			if(Keyboard.isKeyDown(i)) return false;
 		return true;
 	}
 	
@@ -114,7 +98,7 @@ public class Logic {
 		movePlayer();
 		lootPlayer();
 		printLoot();
-		debugCommands();
+		//debugCommands();
 	}
 	
 	// DEBUG

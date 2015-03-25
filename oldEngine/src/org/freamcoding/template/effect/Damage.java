@@ -12,7 +12,7 @@ public class Damage extends Effect {
 	
 	public Damage(int dmg) {
 		effect = dmg;
-		tooltip = "deals "+" damage";
+		tooltip = "deals "+effect+" damage";
 	}
 
 	@Override

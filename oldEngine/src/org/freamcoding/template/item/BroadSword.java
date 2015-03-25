@@ -12,7 +12,7 @@ public class BroadSword extends Weapon {
 	public BroadSword(){
 		super();
 		negative.add(new Damage(7));
-		toolTip = "Broad Sword - ";
+		toolTip = "Broad Sword ";
 	}
 	
 	public void bindSelf(){

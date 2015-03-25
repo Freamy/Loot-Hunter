@@ -17,7 +17,7 @@ public class SmallerZombie extends Actor {
 		this.weapon = new Mace();
 		maxHealth = 25;
 		health = 25;
-		toolTip = "Weapon: " + weapon.getTooltip();
+		toolTip = "Weapon " + weapon.getTooltip();
 	}
 
 	@Override

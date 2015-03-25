@@ -12,9 +12,9 @@ public class ChaosMace extends Weapon {
 	
 	public ChaosMace(){
 		super();
-		negative.add(new Damage(14));
+		negative.add(new Damage(11));
 		negative.add(new Banish(0));
-		toolTip = "Chaos Mace     ";
+		toolTip = "Chaos Mace ";
 	}
 	
 	public void bindSelf(){

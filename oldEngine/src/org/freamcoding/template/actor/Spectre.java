@@ -2,8 +2,7 @@ package org.freamcoding.template.actor;
 
 import java.util.ArrayList;
 
-import org.freamcoding.template.item.FlameSword;
-import org.freamcoding.template.item.IceGloves;
+import org.freamcoding.template.item.IceSword;
 import org.freamcoding.template.map.Block;
 import org.freamcoding.template.map.Map;
 import org.newdawn.slick.opengl.Texture;
@@ -14,10 +13,10 @@ public class Spectre extends Actor {
 
 	public Spectre(int x, int y) {
 		super(x, y);
-		this.weapon = new IceGloves();
+		this.weapon = new IceSword();
 		maxHealth = 25;
 		health = 25;
-		toolTip = "Weapon: " + weapon.getTooltip();
+		toolTip = "Weapon " + weapon.getTooltip();
 	}
 
 	@Override

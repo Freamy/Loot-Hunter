@@ -14,7 +14,7 @@ public class FlameSword extends Weapon {
 		super();
 		negative.add(new Damage(5));
 		negative.add(new Burning(4));
-		toolTip = "Flame Sword - ";
+		toolTip = "Flame Sword ";
 	}
 	
 	public void bindSelf(){

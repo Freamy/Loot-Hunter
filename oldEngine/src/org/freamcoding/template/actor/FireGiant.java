@@ -16,7 +16,7 @@ public class FireGiant extends Actor {
 		this.weapon = new FlameSword();
 		maxHealth = 45;
 		health = 45;
-		toolTip = "Weapon: " + weapon.getTooltip();
+		toolTip = "Weapon " + weapon.getTooltip();
 	}
 
 	@Override

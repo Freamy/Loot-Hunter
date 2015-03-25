@@ -6,15 +6,15 @@ import org.freamcoding.template.effect.Chill;
 import org.freamcoding.template.effect.Damage;
 import org.newdawn.slick.opengl.Texture;
 
-public class IceGloves extends Weapon {
+public class IceSword extends Weapon {
 	
-	public ArrayList<Texture> self = loadTextures("graphics/weapons/IceGloves", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/weapons/IceSword", "png", true);
 	
-	public IceGloves(){
+	public IceSword(){
 		super();
 		negative.add(new Damage(14));
 		negative.add(new Chill(3));
-		toolTip = "Ice Sword - ";
+		toolTip = "Ice Sword ";
 	}
 	
 	public void bindSelf(){
