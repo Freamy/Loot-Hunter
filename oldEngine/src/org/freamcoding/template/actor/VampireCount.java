@@ -1,8 +1,7 @@
 package org.freamcoding.template.actor;
-
 import java.util.ArrayList;
-
 import org.freamcoding.template.item.IceSword;
+
 import org.freamcoding.template.map.Block;
 import org.freamcoding.template.map.Map;
 import org.newdawn.slick.opengl.Texture;
