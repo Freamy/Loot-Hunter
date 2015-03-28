@@ -181,7 +181,8 @@ public class Logic {
 	
 	public void lootPlayer(){
 		LootBag delete = null;
-		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE) && keyNotDown){
+			keyNotDown = false;
 			for(LootBag loot: Data.loots){
 				int x = Data.player.blockX;
 				int y = Data.player.blockY;
@@ -290,7 +291,9 @@ public class Logic {
 		
 		removeEffects();
 		Data.enemies.removeAll(deathActors);
-		if(Data.player.health <= 0) Data.run = false;
+		if(Data.player.health <= 0){
+			Data.remakeGame();
+		}
 	}
 	
 	public void removeEffects(){
@@ -309,6 +312,7 @@ public class Logic {
 	}
 	
 	private void initCycle(){
+		Data.tooltip = "";
 		Assets.timer.tick();
 		Data.map.darken();
 		MouseInput.resetMouseCoordinates();

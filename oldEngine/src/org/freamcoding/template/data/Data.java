@@ -63,7 +63,9 @@ public class Data {
 		//fullVision = (int)vision*2;
 	}
 	
-	public void makeDummy(){
+	public static void makeDummy(){
+		enemies.clear();
+		loots.clear();
 		Random rgn = new Random();
 		int mRoom = 9;
 		player = new Dummy(map.rooms[0][0].centerX,map.rooms[0][0].centerY);
@@ -131,6 +133,13 @@ public class Data {
 				map.rooms[x][y].occupied = true;
 			}
 		}
+	}
+	
+	public static void remakeGame(){
+		map = new Map();
+		RoomedDungeonGenerator dungeonGenerator = new RoomedDungeonGenerator();
+		map = dungeonGenerator.makeMap(map, 50, 9);
+		makeDummy();
 	}
 
 }
