@@ -2,8 +2,8 @@ package org.freamcoding.template.item;
 
 import java.util.ArrayList;
 
-import org.freamcoding.template.effect.Chill;
 import org.freamcoding.template.effect.Damage;
+import org.freamcoding.template.effect.damage.magical.ice.Chill;
 import org.newdawn.slick.opengl.Texture;
 
 public class IceSword extends Weapon {
@@ -12,8 +12,8 @@ public class IceSword extends Weapon {
 	
 	public IceSword(){
 		super();
-		negative.add(new Damage(14));
-		negative.add(new Chill(3));
+		negative.add(new Damage(0));
+		negative.add(new Chill(5));
 		toolTip = "Ice Sword ";
 	}
 	

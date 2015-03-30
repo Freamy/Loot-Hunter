@@ -20,7 +20,7 @@ public class Burning extends Effect {
 	@Override
 	public void effect(Actor actor) {
 		actor.health -= effect;
-		this.showEffectText(actor);
+		this.showEffectText(actor,5);
 		if(canBeStacked)
 			actor.appliedEffects.add(new Burning(effect));
 		else{
@@ -35,7 +35,7 @@ public class Burning extends Effect {
 	
 	public void applyTimedEffects(Actor actor){
 		actor.health -= effect;
-		this.showEffectText(actor);
+		this.showEffectText(actor,5);
 		time--;
 	}
 	

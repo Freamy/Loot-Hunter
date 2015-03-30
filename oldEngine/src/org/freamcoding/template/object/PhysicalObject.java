@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.freamcoding.template.data.Data;
 import org.freamcoding.template.io.MouseInput;
-import org.freamcoding.template.object.camera.Camera;
 import org.newdawn.slick.opengl.Texture;
 
 /**
@@ -61,10 +60,5 @@ public class PhysicalObject extends MyObject {
 		return false;
 	}
 	
-	public boolean collisionCheckingBlockPrecise(Camera cam){
-		int mx = MouseInput.mouseBlockX + cam.blockX;
-		int my = MouseInput.mouseBlockY + cam.blockY;
-		if(mx == blockX && my == blockY) return true;
-		return false;
-	}
+
 }

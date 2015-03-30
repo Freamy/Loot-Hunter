@@ -126,6 +126,7 @@ public class Screen {
 	public void drawPlayer(){
 		drawActor(Data.player);
 		drawHealthBar(Data.player);
+		drawExperienceBar(Data.player);
 		drawPlayerWeapon(Data.player);
 	}
 	
@@ -133,9 +134,7 @@ public class Screen {
 		float width = Data.blockSize*Data.visionX*2;
 		float fullLength = Data.width-width;
 		float actualLenght = ((float)actor.health/actor.maxHealth)*fullLength;
-		//float size = (Data.width-Data.blockSize*Data.visionX*2)/width*Data.blockSize;
-		float height = 255;//(width - Data.map.height*size);
-	//	System.out.println(height);
+		float height = 255;
 		glDisable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 			glColor3f(0.4f,0,0);
@@ -145,6 +144,26 @@ public class Screen {
 			glVertex2f(width, height+50);
 		glEnd();
 		glEnable(GL_TEXTURE_2D);
+		glColor3f(1,1,1);
+		this.drawText(Data.player.health+"", width+30, height+20, 12);
+	}
+	
+	public void drawExperienceBar(Actor actor){
+		float width = Data.blockSize*Data.visionX*2;
+		float fullLength = Data.width-width;
+		float actualLenght = ((float)actor.experience/actor.expForLevel)*fullLength;
+		float height = 310;
+		glDisable(GL_TEXTURE_2D);
+		glBegin(GL_QUADS);
+			glColor3f(0,0.7f,0);
+			glVertex2f(width, height);
+			glVertex2f(width+actualLenght, height);
+			glVertex2f(width+actualLenght, height+10);
+			glVertex2f(width, height+10);
+		glEnd();
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1,1,1);
+		this.drawText(Data.player.experience+"", width+30, height, 12);
 	}
 	
 	public void drawPlayerWeapon(Actor player){

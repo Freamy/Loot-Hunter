@@ -18,11 +18,10 @@ public class Damage extends Effect {
 	@Override
 	public void effect(Actor actor) {
 		actor.health -= effect;
-		this.showEffectText(actor);
+		this.showEffectText(actor,5);
 	}
 	
 	public void bindSelf(){
-		//ethis.visionRange = 2;
 		self.get(frame%(animationLength+1)).bind();
 	}
 

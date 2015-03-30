@@ -14,11 +14,10 @@ public abstract class Effect extends PhysicalObject{
 	
 	public String tooltip;
 	
-	public void showEffectText(Actor actor){
+	public void showEffectText(Actor actor, int effect){
 		int size = Data.blockSize;
 		float drawX = actor.blockX - Data.player.blockX + Data.visionX;
 		float drawY = actor.blockY - Data.player.blockY + Data.visionY;
-		int hp = this.effect;
-		Data.floatingTexts.add(new FloatingText(drawX * size, drawY * size, Integer.toString(hp)));
+		Data.floatingTexts.add(new FloatingText(drawX * size, drawY * size, Integer.toString(effect)));
 	}
 }

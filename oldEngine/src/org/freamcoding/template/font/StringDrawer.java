@@ -22,7 +22,6 @@ public class StringDrawer {
 	
 	public int convertCharToTextureIndex(char c){
 		if(c == ' ') {
-			System.out.println(c+" "+(int)c);
 			return c-22;
 		}
 		if(c > 57) return c-54;

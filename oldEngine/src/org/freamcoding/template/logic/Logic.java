@@ -276,10 +276,10 @@ public class Logic {
 			}
 			if(actor.health <= 0){
 				deathActors.add(actor);
+				Data.player.gainExperience(actor);
 				try {
 					Data.loots.add(new LootBag(actor.blockX, actor.blockY, actor.weapon.getClass().newInstance()));
 				} catch (InstantiationException | IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

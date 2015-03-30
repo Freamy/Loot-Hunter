@@ -1,11 +1,12 @@
-package org.freamcoding.template.effect;
+package org.freamcoding.template.effect.damage.magical.ice;
 
 import java.util.ArrayList;
 
 import org.freamcoding.template.actor.Actor;
+import org.freamcoding.template.effect.Effect;
 import org.newdawn.slick.opengl.Texture;
 
-public class Chill extends Effect {
+public class Chill extends Ice {
 
 	public ArrayList<Texture> self = loadTextures("graphics/effectIcons/chill", "png", true);
 
@@ -19,8 +20,6 @@ public class Chill extends Effect {
 
 	@Override
 	public void effect(Actor actor) {
-		actor.health -= effect;
-		this.showEffectText(actor);
 		if(canBeStacked)
 			actor.appliedEffects.add(new Chill(effect));
 		else{
@@ -34,8 +33,14 @@ public class Chill extends Effect {
 	}
 	
 	public void applyTimedEffects(Actor actor){
-		actor.health -= effect;
-		this.showEffectText(actor);
+		int realDamage = this.effect;
+		for(Effect effect: actor.ring.effects){
+			if(this.getClass().getSuperclass().equals(effect.getClass())){
+				realDamage += actor.ring.modifiesEffect;
+			}
+		}
+		actor.health -= realDamage;
+		this.showEffectText(actor, realDamage);
 		time--;
 	}
 	

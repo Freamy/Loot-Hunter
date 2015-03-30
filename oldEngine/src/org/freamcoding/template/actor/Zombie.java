@@ -18,6 +18,7 @@ public class Zombie extends Actor {
 		maxHealth = 25;
 		health = 25;
 		toolTip = "Weapon " + weapon.getTooltip();
+		level = 5;
 	}
 
 	@Override

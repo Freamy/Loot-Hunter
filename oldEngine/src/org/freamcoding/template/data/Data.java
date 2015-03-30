@@ -73,47 +73,7 @@ public class Data {
 		enemies.add(new VampireCount(map.rooms[8][8].centerX, map.rooms[8][8].centerY));
 		map.rooms[8][8].occupied = true;
 		map.rooms[0][0].occupied = true;
-		for(int i = 0; i < 15; i++){
-			int x = rgn.nextInt(mRoom);
-			int y = rgn.nextInt(mRoom);
-			int placeX = map.rooms[x][y].centerX;
-			int placeY = map.rooms[x][y].centerY;
-			if(!map.rooms[x][y].occupied){
-				enemies.add(new SmallerZombie(placeX,placeY));
-				map.rooms[x][y].occupied = true;
-			}
-		}
-		for(int i = 0; i < 10; i++){
-			int x = rgn.nextInt(mRoom);
-			int y = rgn.nextInt(mRoom);
-			int placeX = map.rooms[x][y].centerX;
-			int placeY = map.rooms[x][y].centerY;
-			if(!map.rooms[x][y].occupied){
-				enemies.add(new Zombie(placeX,placeY));
-				map.rooms[x][y].occupied = true;
-			}
-		}
-		for(int i = 0; i < 10; i++){
-			int x = rgn.nextInt(mRoom);
-			int y = rgn.nextInt(mRoom);
-			int placeX = map.rooms[x][y].centerX;
-			int placeY = map.rooms[x][y].centerY;
-			if(!map.rooms[x][y].occupied){
-				enemies.add(new Skeleton(placeX,placeY));
-				map.rooms[x][y].occupied = true;
-			}
-		}
-		for(int i = 0; i < 7; i++){
-			int x = rgn.nextInt(mRoom);
-			int y = rgn.nextInt(mRoom);
-			int placeX = map.rooms[x][y].centerX;
-			int placeY = map.rooms[x][y].centerY;
-			if(!map.rooms[x][y].occupied){
-				enemies.add(new SkeletonWarrior(placeX,placeY));
-				map.rooms[x][y].occupied = true;
-			}
-		}
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 30; i++){
 			int x = rgn.nextInt(mRoom);
 			int y = rgn.nextInt(mRoom);
 			int placeX = map.rooms[x][y].centerX;
