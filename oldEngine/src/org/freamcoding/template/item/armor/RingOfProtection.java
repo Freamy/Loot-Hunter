@@ -16,7 +16,6 @@ public class RingOfProtection extends Ring {
 	}
 	
 	public void bindSelf(){
-		//ethis.visionRange = 2;
 		self.get(frame%(animationLength+1)).bind();
 	}
 }

@@ -13,7 +13,7 @@ public class RingOfRegeneration extends Ring {
 	public RingOfRegeneration(){
 		super();
 		effects.add(new Heal(0));
-		modifiesEffect = 1;
+		modifiesEffect = -1;
 	}
 	
 	public void bindSelf(){

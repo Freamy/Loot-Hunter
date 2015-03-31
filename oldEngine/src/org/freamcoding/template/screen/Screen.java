@@ -293,9 +293,11 @@ public class Screen {
 		int size = Data.blockSize;
 		int i = 0;
 		for(Effect effect: Data.player.appliedEffects){
-			effect.bindSelf();
-			drawQuad(0+i*size, 0, size, size);
-			i++;
+			if(effect.visible){
+				effect.bindSelf();
+				drawQuad(0+i*size, 0, size, size);
+				i++;
+			}
 		}
 	}
 	

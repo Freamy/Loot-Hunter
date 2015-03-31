@@ -2,9 +2,7 @@ package org.freamcoding.template.item;
 
 import java.util.ArrayList;
 
-import org.freamcoding.template.effect.Damage;
 import org.freamcoding.template.effect.damage.magical.ice.Chill;
-import org.freamcoding.template.effect.damage.physical.Slice;
 import org.newdawn.slick.opengl.Texture;
 
 public class SkeletonSpell extends Weapon {

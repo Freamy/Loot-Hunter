@@ -18,15 +18,9 @@ public class Heal extends Physical{
 
 	@Override
 	public void applyTimedEffects(Actor actor) {
-		int realDamage = effect;
-		for(Effect armor: actor.ring.effects){
-			if(armor.getClass().equals(this.getClass())){
-				realDamage += actor.ring.modifiesEffect;
-			}
-		}
-		actor.health += realDamage;
-		this.showEffectText(actor, realDamage);
-		
+		int realDamage = this.calculateInfluences(actor);
+		if(actor.maxHealth > actor.health)
+			actor.health += realDamage;
 	}
 
 }

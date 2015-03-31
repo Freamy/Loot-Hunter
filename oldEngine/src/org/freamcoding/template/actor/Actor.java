@@ -89,8 +89,8 @@ public abstract class Actor extends PhysicalObject {
 	}
 
 	public void ringLooted(Ring inRing) {
-		if(ring.getClass().equals(NoRing.class)) ring = inRing;
-		else if(ring2.getClass().equals(NoRing.class)) ring2 = inRing;
+		if(ring == null) ring = inRing;
+		else if(ring2 == null) ring2 = inRing;
 		else{
 			ring2 = ring;
 			ring = inRing;

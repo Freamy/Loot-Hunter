@@ -19,8 +19,6 @@ public class Dummy extends Actor {
 		super(x, y);
 		on = true;
 		weapon = new Mace();
-		ring = new NoRing();
-		ring2 = new NoRing();
 		armor = new SoftLeatherArmor();
 		maxHealth = 100;
 		health = 100;

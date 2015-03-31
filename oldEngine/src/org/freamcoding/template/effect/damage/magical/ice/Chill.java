@@ -16,6 +16,7 @@ public class Chill extends Ice {
 		this.time = 3;
 		canBeStacked = true;
 		tooltip = "deals "+effect+" damage for "+time+" turn";
+		visible = true;
 	}
 
 	@Override
@@ -33,12 +34,7 @@ public class Chill extends Ice {
 	}
 	
 	public void applyTimedEffects(Actor actor){
-		int realDamage = this.effect;
-		for(Effect effect: actor.ring.effects){
-			if(this.getClass().getSuperclass().equals(effect.getClass())){
-				realDamage -= actor.ring.modifiesEffect;
-			}
-		}
+		int realDamage = calculateInfluences(actor);
 		if(realDamage > 0){
 			actor.health -= realDamage;
 			this.showEffectText(actor, realDamage);

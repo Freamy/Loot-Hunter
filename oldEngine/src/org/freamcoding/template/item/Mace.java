@@ -2,7 +2,7 @@ package org.freamcoding.template.item;
 
 import java.util.ArrayList;
 
-import org.freamcoding.template.effect.Damage;
+import org.freamcoding.template.effect.damage.physical.Bludgeon;
 import org.newdawn.slick.opengl.Texture;
 
 public class Mace extends Weapon {
@@ -11,7 +11,7 @@ public class Mace extends Weapon {
 	
 	public Mace(){
 		super();
-		negative.add(new Damage(3));
+		negative.add(new Bludgeon(3));
 		toolTip = "Mace ";
 	}
 	

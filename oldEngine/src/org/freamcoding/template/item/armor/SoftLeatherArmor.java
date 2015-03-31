@@ -2,7 +2,7 @@ package org.freamcoding.template.item.armor;
 
 import java.util.ArrayList;
 
-import org.freamcoding.template.effect.damage.physical.Slice;
+import org.freamcoding.template.effect.damage.physical.Bludgeon;
 import org.newdawn.slick.opengl.Texture;
 
 public class SoftLeatherArmor extends Armor {
@@ -11,12 +11,11 @@ public class SoftLeatherArmor extends Armor {
 	
 	public SoftLeatherArmor(){
 		super();
-		effects.add(new Slice(10));
+		effects.add(new Bludgeon(0));
 		modifiesEffect = 4;
 	}
 	
 	public void bindSelf(){
-		//ethis.visionRange = 2;
 		self.get(frame%(animationLength+1)).bind();
 	}
 

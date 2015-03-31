@@ -3,9 +3,9 @@ package org.freamcoding.template.effect.damage.physical;
 import org.freamcoding.template.actor.Actor;
 import org.freamcoding.template.effect.Effect;
 
-public class Slice extends Physical{
+public class Bludgeon extends Physical{
 	
-	public Slice(int dmg){
+	public Bludgeon(int dmg){
 		this.effect = dmg;
 		canBeStacked = false;
 		this.time = 0;
@@ -13,12 +13,7 @@ public class Slice extends Physical{
 
 	@Override
 	public void effect(Actor actor) {
-		int realDamage = effect;
-		for(Effect armor: actor.armor.effects){
-			if(armor.getClass().equals(this.getClass())){
-				realDamage += actor.armor.modifiesEffect;
-			}
-		}
+		int realDamage = calculateInfluences(actor);
 		actor.health -= realDamage;
 		this.showEffectText(actor, realDamage);
 	}
