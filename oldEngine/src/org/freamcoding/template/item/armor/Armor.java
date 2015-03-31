@@ -6,16 +6,18 @@ import org.freamcoding.template.actor.Actor;
 import org.freamcoding.template.effect.Effect;
 import org.freamcoding.template.item.Item;
 
-public class Ring extends Item {
+public class Armor extends Item {
+	
 	public ArrayList<Effect> effects;
 	public int modifiesEffect;
-
-	public Ring(){
+	
+	public Armor(){
 		effects = new ArrayList<Effect>();
 	}
 
 	@Override
 	public void imLooted(Actor actor) {
-		actor.ringLooted(this);
+		actor.armorLooted(this);
 	}
+
 }

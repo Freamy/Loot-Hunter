@@ -61,12 +61,8 @@ public class FoVAlgorithm {
 		for(Block current: collisionBlocks){
 			int blockX = current.x;
 			int blockY = current.y;
-			boolean visitedTest = Data.map.map[blockX][blockY].visited;
 			Data.map.map[blockX][blockY].visible = true;
 			Data.map.map[blockX][blockY].visited = true;
-			if(visitedTest != Data.map.map[blockX][blockY].visited){
-				if(Data.player.health < Data.player.maxHealth) Data.player.health++;
-			}
 			if(Tile.tiles[map.map[blockX][blockY].getId()].blocksVision) {
 				return;
 			}

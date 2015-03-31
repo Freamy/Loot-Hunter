@@ -8,7 +8,7 @@ import org.newdawn.slick.opengl.Texture;
 
 public class LootBag extends PhysicalObject{
 	
-	public ArrayList<Texture> self = loadTextures("graphics/actors/lootbag", "png", true);
+//	public ArrayList<Texture> self = loadTextures("graphics/actors/lootbag", "png", true);
 	public Item loot;
 	
 	public LootBag(int x, int y, Item loot){
@@ -17,9 +17,9 @@ public class LootBag extends PhysicalObject{
 		this.loot = loot;
 	}
 	
-	public void bindSelf(){
-		self.get(frame%(animationLength+1)).bind();
-	}
+	//public void bindSelf(){
+		//self.get(frame%(animationLength+1)).bind();
+	//}
 
 
 }

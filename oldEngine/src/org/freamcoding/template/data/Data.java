@@ -70,7 +70,6 @@ public class Data {
 		int mRoom = 9;
 		player = new Dummy(map.rooms[0][0].centerX,map.rooms[0][0].centerY);
 		player.visionRange = 4;
-		enemies.add(new VampireCount(map.rooms[8][8].centerX, map.rooms[8][8].centerY));
 		map.rooms[8][8].occupied = true;
 		map.rooms[0][0].occupied = true;
 		for(int i = 0; i < 30; i++){
@@ -79,17 +78,7 @@ public class Data {
 			int placeX = map.rooms[x][y].centerX;
 			int placeY = map.rooms[x][y].centerY;
 			if(!map.rooms[x][y].occupied){
-				enemies.add(new Spectre(placeX,placeY));
-				map.rooms[x][y].occupied = true;
-			}
-		}
-		for(int i = 0; i < 3; i++){
-			int x = rgn.nextInt(mRoom);
-			int y = rgn.nextInt(mRoom);
-			int placeX = map.rooms[x][y].centerX;
-			int placeY = map.rooms[x][y].centerY;
-			if(!map.rooms[x][y].occupied){
-				enemies.add(new FireGiant(placeX,placeY));
+				enemies.add(new SkeletalMage(placeX,placeY));
 				map.rooms[x][y].occupied = true;
 			}
 		}

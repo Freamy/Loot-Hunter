@@ -1,10 +1,15 @@
 package org.freamcoding.template.actor;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.freamcoding.template.assets.algorithms.aStar.Zone;
+import org.freamcoding.template.drop.Drop;
 import org.freamcoding.template.effect.Effect;
+import org.freamcoding.template.item.Item;
 import org.freamcoding.template.item.Weapon;
+import org.freamcoding.template.item.armor.Armor;
+import org.freamcoding.template.item.armor.NoRing;
 import org.freamcoding.template.item.armor.Ring;
 import org.freamcoding.template.map.Block;
 import org.freamcoding.template.map.Map;
@@ -23,6 +28,8 @@ public abstract class Actor extends PhysicalObject {
 	
 	public Weapon weapon;
 	public Ring ring;
+	public Ring ring2;
+	public Armor armor;
 	
 	public int health;
 	public int maxHealth;
@@ -35,11 +42,13 @@ public abstract class Actor extends PhysicalObject {
 	public String toolTip;
 	
 	public ArrayList<Effect> appliedEffects;
+	public ArrayList<Drop> dropTable;
 	
 	public Actor(int x, int y){
 		super(x,y);
 		hited = false;
 		appliedEffects = new ArrayList<Effect>();
+		dropTable = new ArrayList<Drop>();
 	}
 	
 	public void tick(){
@@ -61,5 +70,35 @@ public abstract class Actor extends PhysicalObject {
 	}
 	
 	public abstract ArrayList<Block> buildVisionBorder(Map map);
+
+	public Item getDrop() {
+		Random rgn = new Random();
+		int rate = rgn.nextInt(100);
+		for(Drop drop: dropTable){
+			if(drop.droprate > rate) return drop.item;
+		}
+		return null;
+	}
+
+	public void pickUp(Item loot) {
+		loot.imLooted(this);
+	}
+
+	public void armorLooted(Armor inArmor) {
+		armor = inArmor;
+	}
+
+	public void ringLooted(Ring inRing) {
+		if(ring.getClass().equals(NoRing.class)) ring = inRing;
+		else if(ring2.getClass().equals(NoRing.class)) ring2 = inRing;
+		else{
+			ring2 = ring;
+			ring = inRing;
+		}
+	}
+
+	public void weaponLooted(Weapon inWeapon) {
+		this.weapon = inWeapon;
+	}
 
 }

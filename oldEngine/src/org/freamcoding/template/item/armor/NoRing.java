@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import org.freamcoding.template.effect.damage.magical.ice.Ice;
 import org.newdawn.slick.opengl.Texture;
 
-public class RingOfProtection extends Ring {
+public class NoRing extends Ring {
 	
-	public ArrayList<Texture> self = loadTextures("graphics/armor/RingOfProtection", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/armor/noRing", "png", true);
 		
-	public RingOfProtection(){
+	public NoRing(){
 		super();
-		effects.add(new Ice());
-		modifiesEffect = 5;
 	}
 	
 	public void bindSelf(){

@@ -29,7 +29,7 @@ public class Fonts {
 	
 	public void loadTextures(String in){
 		FontPack current = getFontPack(in);
-		loadTextureList(current.getTexture(), "resource/textures/texts", true);
+		loadTextureList(current.getTexture(), "resource/textures/texts", false);
 	}
 	
 

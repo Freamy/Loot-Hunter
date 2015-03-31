@@ -3,20 +3,20 @@ package org.freamcoding.template.item.armor;
 import java.util.ArrayList;
 
 import org.freamcoding.template.effect.damage.magical.ice.Ice;
+import org.freamcoding.template.effect.damage.physical.Heal;
 import org.newdawn.slick.opengl.Texture;
 
-public class RingOfProtection extends Ring {
+public class RingOfRegeneration extends Ring {
 	
-	public ArrayList<Texture> self = loadTextures("graphics/armor/RingOfProtection", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/armor/RingOfRegeneration", "png", true);
 		
-	public RingOfProtection(){
+	public RingOfRegeneration(){
 		super();
-		effects.add(new Ice());
-		modifiesEffect = 5;
+		effects.add(new Heal(0));
+		modifiesEffect = 1;
 	}
 	
 	public void bindSelf(){
-		//ethis.visionRange = 2;
 		self.get(frame%(animationLength+1)).bind();
 	}
 }

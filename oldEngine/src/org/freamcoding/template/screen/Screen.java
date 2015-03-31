@@ -7,6 +7,7 @@ import org.freamcoding.template.data.Data;
 import org.freamcoding.template.effect.Effect;
 import org.freamcoding.template.font.Letter;
 import org.freamcoding.template.font.StringDrawer;
+import org.freamcoding.template.item.armor.NoRing;
 import org.freamcoding.template.lootBags.LootBag;
 import org.freamcoding.template.map.Map;
 import org.freamcoding.template.map.tile.Tile;
@@ -30,10 +31,10 @@ public class Screen {
 	
 	public void paint(){
 		drawMap();
+		drawEnemy();
+		drawBlackBox();
 		drawMinimap();
 		drawPlayer();
-		drawEnemy();
-		
 		drawFloatingText();
 		drawEffects();
 		drawTooltips();
@@ -128,6 +129,8 @@ public class Screen {
 		drawHealthBar(Data.player);
 		drawExperienceBar(Data.player);
 		drawPlayerWeapon(Data.player);
+		drawPlayerRing(Data.player);
+		drawPlayerArmor(Data.player);
 	}
 	
 	public void drawHealthBar(Actor actor){
@@ -167,12 +170,44 @@ public class Screen {
 	}
 	
 	public void drawPlayerWeapon(Actor player){
-		float startX = Data.blockSize*Data.visionX*2;
-		float startY = 305;
-		float sizeX = Data.width*0.1f;
+		float startX = 1025;
+		float startY = 335;
+		float sizeX = 64;
 		float sizeY = sizeX;
 		player.weapon.bindSelf();
 		glColor4f(1,1,1,1);
+		drawQuad(startX, startY, sizeX, sizeY);
+	}
+	
+	public void drawPlayerRing(Actor player){
+		float startX = 1175;
+		float startY = 305;
+		float sizeX = 64;
+		float sizeY = sizeX;
+		NoRing draw = new NoRing();
+		startY += 20;
+		if(player.ring == null)
+			draw.bindSelf();
+		else
+			player.ring.bindSelf();
+		glColor4f(1,1,1,1);
+		drawQuad(startX, startY, sizeX, sizeY);
+		startY += 40;
+		if(player.ring2 == null)
+			draw.bindSelf();
+		else
+			player.ring2.bindSelf();
+		glColor4f(1,1,1,1);
+		drawQuad(startX, startY, sizeX, sizeY);
+	}
+	
+	public void drawPlayerArmor(Actor player){
+		float startX = 1075;
+		float startY = 330;
+		float sizeX = 80;
+		float sizeY = sizeX;
+		startX += sizeX-60;
+		player.armor.bindSelf();
 		drawQuad(startX, startY, sizeX, sizeY);
 	}
 	
@@ -235,10 +270,20 @@ public class Screen {
 		}
 	}
 	
+	
+	public void drawBlackBox(){
+		glDisable(GL_TEXTURE_2D);
+			glColor3f(0,0,0);
+			drawQuad(960, 0, 320, 1024);
+			drawQuad(0,960,1024,70);
+			glColor3f(1,1,1);
+		glEnable(GL_TEXTURE_2D);
+	}
+	
 	public void drawFloatingText(){
 		for(FloatingText text: Data.floatingTexts){
 			glColor4f(1,0,0,1);
-			drawText(text.text, text.x, text.y, 32);
+			drawText(text.text, text.x, text.y, 24);
 			glColor4f(1,0,0,1);
 		}
 	}
@@ -255,7 +300,7 @@ public class Screen {
 	}
 	
 	public void drawTooltips(){
-		drawText(Data.tooltip, 20, 960, 16);
+		drawText(Data.tooltip, 20, 960, 12);
 	}
 	
 	public void drawText(String text, float x, float y, int size){

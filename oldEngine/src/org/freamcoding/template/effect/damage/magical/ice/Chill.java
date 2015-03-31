@@ -36,11 +36,13 @@ public class Chill extends Ice {
 		int realDamage = this.effect;
 		for(Effect effect: actor.ring.effects){
 			if(this.getClass().getSuperclass().equals(effect.getClass())){
-				realDamage += actor.ring.modifiesEffect;
+				realDamage -= actor.ring.modifiesEffect;
 			}
 		}
-		actor.health -= realDamage;
-		this.showEffectText(actor, realDamage);
+		if(realDamage > 0){
+			actor.health -= realDamage;
+			this.showEffectText(actor, realDamage);
+		}
 		time--;
 	}
 	

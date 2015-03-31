@@ -2,8 +2,11 @@ package org.freamcoding.template.actor;
 
 import java.util.ArrayList;
 
+import org.freamcoding.template.effect.damage.physical.Heal;
 import org.freamcoding.template.item.*;
+import org.freamcoding.template.item.armor.NoRing;
 import org.freamcoding.template.item.armor.RingOfProtection;
+import org.freamcoding.template.item.armor.SoftLeatherArmor;
 import org.freamcoding.template.map.Block;
 import org.freamcoding.template.map.Map;
 import org.newdawn.slick.opengl.Texture;
@@ -16,12 +19,15 @@ public class Dummy extends Actor {
 		super(x, y);
 		on = true;
 		weapon = new Mace();
-		ring = new RingOfProtection();
+		ring = new NoRing();
+		ring2 = new NoRing();
+		armor = new SoftLeatherArmor();
 		maxHealth = 100;
 		health = 100;
 		experience = 10;
 		expForLevel = 100;
 		level = 1;
+		appliedEffects.add(new Heal(0));
 	}
 
 	public void bindSelf(){

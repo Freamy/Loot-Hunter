@@ -6,7 +6,7 @@ import org.freamcoding.template.actor.Actor;
 import org.freamcoding.template.effect.Effect;
 import org.freamcoding.template.object.PhysicalObject;
 
-public class Item extends PhysicalObject {
+public abstract class Item extends PhysicalObject {
 	
 	ArrayList<Effect> positive;
 	ArrayList<Effect> negative;
@@ -46,4 +46,6 @@ public class Item extends PhysicalObject {
 		}
 		return tip;
 	}
+
+	public abstract void imLooted(Actor actor);
 }

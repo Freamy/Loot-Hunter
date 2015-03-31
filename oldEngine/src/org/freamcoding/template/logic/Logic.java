@@ -13,6 +13,7 @@ import org.freamcoding.template.assets.floatingText.FloatingText;
 import org.freamcoding.template.data.Data;
 import org.freamcoding.template.effect.Effect;
 import org.freamcoding.template.io.MouseInput;
+import org.freamcoding.template.item.Item;
 import org.freamcoding.template.item.Weapon;
 import org.freamcoding.template.lootBags.LootBag;
 import org.lwjgl.input.Keyboard;
@@ -49,7 +50,7 @@ public class Logic {
 			RoomedDungeonGenerator dungeonGenerator = new RoomedDungeonGenerator();
 			Data.map = dungeonGenerator.makeMap(Data.map, 9, 5);
 		}
-		playerWeaponTooltip();
+		playerTooltips();
 		// DEBUG
 		/*
 		int wheel = Mouse.getDWheel();
@@ -168,15 +169,25 @@ public class Logic {
 		return null;
 	}
 	
-	public void playerWeaponTooltip(){
-		float startX = Data.blockSize*Data.visionX*2;
-		float startY = 305;
-		float sizeX = Data.width*0.1f;
+	public void playerTooltips(){
+		float startX = 1025;
+		float startY = 335;
+		float sizeX = 64;
 		float sizeY = sizeX;
 		
 		int mx = MouseInput.mouseX;
 		int my = MouseInput.mouseY;
 		if(mx > startX && mx < startX+sizeX && my > startY && my < startY + sizeY) Data.tooltip = Data.player.weapon.getTooltip();
+		startX = 1175;
+		startY = 325;
+		if(mx > startX && mx < startX+sizeX && my > startY && my < startY + sizeY) Data.tooltip = Data.player.ring.getTooltip();
+		startX = 1175;
+		startY = 365;
+		if(mx > startX && mx < startX+sizeX && my > startY && my < startY + sizeY) Data.tooltip = Data.player.ring2.getTooltip();
+		startX = 1015;
+		startY = 330;
+		sizeX = sizeY = 80;
+		if(mx > startX && mx < startX+sizeX && my > startY && my < startY + sizeY) Data.tooltip = Data.player.armor.getTooltip();
 	}
 	
 	public void lootPlayer(){
@@ -188,7 +199,7 @@ public class Logic {
 				int y = Data.player.blockY;
 				if(x == loot.blockX && y == loot.blockY){
 					delete = loot;
-					Data.player.weapon = (Weapon) loot.loot;
+					Data.player.pickUp(loot.loot);
 				}
 			}
 		}
@@ -218,14 +229,14 @@ public class Logic {
 			int blockX = enemy.blockX;
 			int blockY = enemy.blockY;
 			Actor player = Data.player;
-			if(distance(player, enemy) > 1.5){
+			if(distance(player, enemy) > enemy.weapon.range){
 				if(fov.isVisibleFrom(new Point(blockX, blockY), player, Data.map)){
 					Zone target = Data.map.graph[player.blockX][player.blockY];
 					followPlayer(enemy, target);
 				}else if(enemy.aim != null){
 					followPlayer(enemy, enemy.aim);
 				}
-			}else{
+			}else if(fov.isVisibleFrom(new Point(blockX, blockY),player, Data.map)){
 				attackPlayer(enemy);
 			}
 		}
@@ -251,10 +262,22 @@ public class Logic {
 		Zone start = Data.map.graph[enemyX][enemyY];
 		Zone end = Data.map.graph[playerX][playerY];
 		Zone[] path = astar.findPath(start, end, Data.map);
-		if(path != null){
+		if(path != null && distance(target, enemy) >= enemy.weapon.range){
 			enemy.blockX = path[path.length-2].x;
 			enemy.blockY = path[path.length-2].y;
 		}
+	}
+	
+	public double distance(Zone target, Actor actor){
+		int x = target.x;
+		int y = target.y;
+		int ax = actor.blockX;
+		int ay = actor.blockY;
+		int dX = (x-ax)*(x-ax);
+		int dY = (y-ay)*(y-ay);
+		double distance = Math.sqrt(dX+dY);
+		System.out.println(distance);
+		return distance;
 	}
 	
 	public void attackPlayer(Actor enemy){
@@ -277,11 +300,9 @@ public class Logic {
 			if(actor.health <= 0){
 				deathActors.add(actor);
 				Data.player.gainExperience(actor);
-				try {
-					Data.loots.add(new LootBag(actor.blockX, actor.blockY, actor.weapon.getClass().newInstance()));
-				} catch (InstantiationException | IllegalAccessException e) {
-					e.printStackTrace();
-				}
+				Item loot = actor.getDrop();
+				if(loot != null)
+					Data.loots.add(new LootBag(actor.blockX, actor.blockY, loot));
 			}
 		}
 		
