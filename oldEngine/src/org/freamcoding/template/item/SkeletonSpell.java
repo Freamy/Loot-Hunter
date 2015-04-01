@@ -7,7 +7,7 @@ import org.newdawn.slick.opengl.Texture;
 
 public class SkeletonSpell extends Weapon {
 	
-	public ArrayList<Texture> self = loadTextures("graphics/weapons/IceSword", "png", true);
+	public ArrayList<Texture> self = loadTextures("graphics/weapons/Mace", "png", true);
 	
 	public SkeletonSpell(){
 		super();
@@ -17,7 +17,6 @@ public class SkeletonSpell extends Weapon {
 	}
 	
 	public void bindSelf(){
-		//ethis.visionRange = 2;
 		self.get(frame%(animationLength+1)).bind();
 	}
 }

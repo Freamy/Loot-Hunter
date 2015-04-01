@@ -78,7 +78,7 @@ public class Data {
 			int placeX = map.rooms[x][y].centerX;
 			int placeY = map.rooms[x][y].centerY;
 			if(!map.rooms[x][y].occupied){
-				enemies.add(new SkeletalMage(placeX,placeY));
+				enemies.add(new SkeletalWraithBlack(placeX,placeY));
 				map.rooms[x][y].occupied = true;
 			}
 		}

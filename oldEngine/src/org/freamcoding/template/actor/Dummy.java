@@ -19,13 +19,12 @@ public class Dummy extends Actor {
 		super(x, y);
 		on = true;
 		weapon = new Mace();
-		armor = new SoftLeatherArmor();
 		maxHealth = 100;
 		health = 100;
 		experience = 10;
 		expForLevel = 100;
 		level = 1;
-		appliedEffects.add(new Heal(0));
+		appliedEffects.add(new Heal(2));
 	}
 
 	public void bindSelf(){

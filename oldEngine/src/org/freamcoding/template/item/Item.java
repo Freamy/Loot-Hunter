@@ -36,7 +36,7 @@ public abstract class Item extends PhysicalObject {
 	}
 	
 	public String getTooltip(){
-		return toolTip+getToolTips(positive)+getToolTips(negative);
+		return toolTip;//+getToolTips(positive)+getToolTips(negative);
 	}
 	
 	public String getToolTips(ArrayList<Effect> tipList){

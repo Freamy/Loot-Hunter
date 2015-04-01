@@ -7,6 +7,7 @@ import org.freamcoding.template.data.Data;
 import org.freamcoding.template.effect.Effect;
 import org.freamcoding.template.font.Letter;
 import org.freamcoding.template.font.StringDrawer;
+import org.freamcoding.template.item.armor.NoArmor;
 import org.freamcoding.template.item.armor.NoRing;
 import org.freamcoding.template.lootBags.LootBag;
 import org.freamcoding.template.map.Map;
@@ -207,7 +208,11 @@ public class Screen {
 		float sizeX = 80;
 		float sizeY = sizeX;
 		startX += sizeX-60;
-		player.armor.bindSelf();
+		NoArmor draw = new NoArmor(); 
+		if(player.armor == null)
+			draw.bindSelf();
+		else
+			player.armor.bindSelf();
 		drawQuad(startX, startY, sizeX, sizeY);
 	}
 	
@@ -306,12 +311,14 @@ public class Screen {
 	}
 	
 	public void drawText(String text, float x, float y, int size){
-		StringDrawer sd = new StringDrawer();
-		sd.prepareSentence(text, (int)x, (int)y, size);
-		for(Letter l: sd.letters){
-			//System.out.println((char)(l.id));
-			Game.fonts.fontPacks.get(0).bindTexture(l.id);
-			drawQuad(l.x,l.y,l.sizeX,l.sizeY);
+		if(text != null){
+			StringDrawer sd = new StringDrawer();
+			sd.prepareSentence(text, (int)x, (int)y, size);
+			for(Letter l: sd.letters){
+				//System.out.println((char)(l.id));
+				Game.fonts.fontPacks.get(0).bindTexture(l.id);
+				drawQuad(l.x,l.y,l.sizeX,l.sizeY);
+			}
 		}
 	}
 	

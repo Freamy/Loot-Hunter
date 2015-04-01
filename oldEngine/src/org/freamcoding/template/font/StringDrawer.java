@@ -7,16 +7,18 @@ public class StringDrawer {
 	public ArrayList<Letter> letters;
 	
 	public void prepareSentence(String sentence, int locX, int locY, int size){
-		letters = new ArrayList<Letter>();
-		sentence = sentence.toUpperCase();
-		for(int i = 0; i < sentence.length(); i++){
-			char current = sentence.charAt(i);
-			int id = convertCharToTextureIndex(current);
-			int padding = 0;
-			float x = locX + size*i - i*padding;
-			float y = locY;
-			float sizeF = size;
-			letters.add(new Letter(x,y,sizeF,size*0.8f,id));
+		if(sentence != null){
+			letters = new ArrayList<Letter>();
+			sentence = sentence.toUpperCase();
+			for(int i = 0; i < sentence.length(); i++){
+				char current = sentence.charAt(i);
+				int id = convertCharToTextureIndex(current);
+				int padding = 0;
+				float x = locX + size*i - i*padding;
+				float y = locY;
+				float sizeF = size;
+				letters.add(new Letter(x,y,sizeF,size*0.8f,id));
+			}
 		}
 	}
 	
